@@ -7,6 +7,10 @@ export const resolvers = {
     company: (_root, { id }) => Company.findById(id),
   },
 
+  Mutation: {
+    createJob: (_root, { input }) => Job.create(input),
+  },
+
   Job: {
     company: (job) => Company.findById(job.companyId),
   },

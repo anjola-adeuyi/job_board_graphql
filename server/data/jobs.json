@@ -16,5 +16,17 @@
     "companyId": "wvdB54Gqbdp_NZTXK9Tue",
     "title": "Full-Stack Developer",
     "description": "We are looking for a Full-Stack Developer familiar with Node.js, Express, and React."
+  },
+  {
+    "id": "gqegBgzehyZJo8HE1bIgH",
+    "title": "GraphQL Developer",
+    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
+    "description": "We are looking for a GraphQL Developer"
+  },
+  {
+    "id": "GojZl7oB25P4ws74FkVrn",
+    "title": "Rest Api Developer",
+    "companyId": "wvdB54Gqbdp_NZTXK9Tue",
+    "description": "We are looking for a Rest Api Developer"
   }
 ]
