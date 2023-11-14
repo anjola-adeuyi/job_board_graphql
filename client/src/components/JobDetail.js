@@ -7,13 +7,20 @@ function JobDetail() {
   const { jobId } = useParams();
 
   const [job, setJob] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    getJob(jobId).then((job) => setJob(job));
+    getJob(jobId)
+      .then((job) => setJob(job))
+      .catch((err) => setError(true));
   }, [jobId]);
 
   if (!job) {
     return <>Loading...</>;
+  }
+
+  if (error) {
+    return <>Sorry, something went wrong.</>;
   }
 
   return (

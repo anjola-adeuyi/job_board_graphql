@@ -6,13 +6,20 @@ import JobList from './JobList';
 function CompanyDetail() {
   const { companyId } = useParams();
   const [company, setCompany] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    getCompany(companyId).then((company) => setCompany(company));
+    getCompany(companyId)
+      .then((company) => setCompany(company))
+      .catch((err) => setError(true));
   }, [companyId]);
 
   if (!company) {
     return <>Loading...</>;
+  }
+
+  if (error) {
+    return <>Sorry, something went wrong.</>;
   }
 
   return (
