@@ -4,9 +4,10 @@ export const resolvers = {
   Query: {
     job: (_root, { id }) => Job.findById(id),
     jobs: () => Job.findAll(),
+    company: (_root, { id }) => Company.findById(id),
   },
 
   Job: {
-    company: (job) => Company.findById(job.companyId)
+    company: (job) => Company.findById(job.companyId),
   },
 };
