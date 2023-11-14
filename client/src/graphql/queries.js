@@ -45,8 +45,13 @@ export async function getCompany(id) {
   const query = gql`
     query CompanyQuery($id: ID!) {
       company(id: $id) {
+        id
         name
         description
+        jobs {
+          id
+          title
+        }
       }
     }
   `;
