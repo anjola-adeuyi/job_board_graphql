@@ -24,7 +24,12 @@ export const resolvers = {
       rejectIf(user.companyId !== job.companyId);
       return Job.delete(id);
     },
-    updateJob: (_root, { input }) => Job.update(input),
+    updateJob: async (_root, { input }, { user }) => {
+      rejectIf(!user);
+      const job = await Job.findById(input.id);
+      rejectIf(user.companyId !== job.companyId);
+      return Job.update({ ...input, companyId: user.companyId });
+    },
   },
 
   Job: {
