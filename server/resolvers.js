@@ -9,6 +9,13 @@ export const resolvers = {
 
   Mutation: {
     createJob: (_root, { input }) => Job.create(input),
+    deleteJob: (_root, { id }) => Job.delete(id),
+    updateJob: (_root, { input }) => {
+      const updatedJob = Job.findById(input.id)
+      console.log('updated Job', updatedJob);
+      console.log('input', input);
+      return Job.update(input);
+    },
   },
 
   Job: {
