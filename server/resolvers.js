@@ -8,14 +8,14 @@ export const resolvers = {
   },
 
   Mutation: {
-    createJob: (_root, { input }) => Job.create(input),
-    deleteJob: (_root, { id }) => Job.delete(id),
-    updateJob: (_root, { input }) => {
-      const updatedJob = Job.findById(input.id)
-      console.log('updated Job', updatedJob);
-      console.log('input', input);
-      return Job.update(input);
+    createJob: (_root, { input }, { user }) => {
+      if (!user) {
+        throw new Error('Unauthorized');
+      }
+      return Job.create({ ...input, companyId: user.companyId });
     },
+    deleteJob: (_root, { id }) => Job.delete(id),
+    updateJob: (_root, { input }) => Job.update(input),
   },
 
   Job: {
